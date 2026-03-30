@@ -135,3 +135,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'  # Or any page you'd like after login
 LOGIN_URL = '/login/'  # The URL for the login page
+
+import os
+import dj_database_url
+
+ALLOWED_HOSTS = ['*']
+
+DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+}
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
